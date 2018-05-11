@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>制作一个简单的注册表单</h1>
+    <form action="">
+        <div>
+            <label for="">姓名</label>
+            <input type="text">
+        </div>
+        <div>
+            <label for="">性别</label>
+            <input type="radio" name="sex">
+            <input type="radio" name="sex">
+        </div>
+        <div>
+            <label for="">出生日期：</label>
+            <input type="date">
+        </div>
+        <div>
+            <label for="">电话：</label>
+            <input type="number">
+        </div>
+        <div>
+            <label for="">邮件：</label>
+            <input type="email">
+        </div>
+        <div>
+            <label for="">个人主页：</label>
+            <input type="url">
+        </div>
+        <div>
+            <label for="">来自</label>
+            <input list="hometwon" />
+            <datalist id="hometwon">
+                <option value="北京">
+                <option value="上海">
+                <option value="河北">
+            </datalist>
+            <select name="" id="">
+                <option value="">北京</option>
+                <option value="">上海</option>
+                <option value="">河北</option>
+            </select>
+        </div>
+        <div>
+            <label for="">个人简介：</label>
+            <textarea name="" id="" cols="30" rows="3"></textarea>
+        </div>
+         <div>
+           <button type="submit">提交</button>
+           <button type="reset">重置</button>
+        </div>
+
+    </form>
+</body>
+</html>

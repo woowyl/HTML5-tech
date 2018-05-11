@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>地球绕着太阳转，月球绕着地球转</title>
+</head>
+<body>
+    <canvas width="600" height="600" style="background:black"id="canvas">
+    	您的浏览器不支持canvas
+    </canvas>
+    <script>
+        //获取画布
+         var canvas=document.getElementById('canvas');
+        //获取绘图环境
+         var cxt=canvas.getContext('2d');
+        //d单位时间time （1:1天）
+        var time=0;
+        function draw(){
+        	 //清除画布
+       	       cxt.clearRect(0,0,600,600);
+           //画地球轨道
+                cxt.strokeStyle="#FFF";
+                cxt.beginPath();
+                //路径函数
+                cxt.arc(300,300,180,0,360,false);
+                cxt.closePath();
+                cxt.stroke();  
+
+            //画太阳
+                cxt.beginPath();
+                //路径函数 x,y,r,角度范围,顺时针/逆时针
+                cxt.arc(300,300,20,0,360,false);
+                cxt.closePath();
+                //填充(渐变色)
+                //cxt.createLinearGradient(内圆心x,内圆心y，内半径r,外圆心x，外圆心y，外圆半径r);
+                var sunColor=cxt.createRadialGradient(300,300,0,300,300,10);
+                sunColor.addColorStop(0,"#F00");
+                sunColor.addColorStop(1,"#F90");
+                cxt.fillStyle=sunColor;
+                cxt.fill();
+               
+        //画地球
+                cxt.save();
+                //异次元空间00点
+                cxt.translate(300,300);
+                //旋转角度,地球公转一周需要365天，time=1转365/360度
+                cxt.rotate(time*365/360*Math.PI/180);
+                //画球
+                cxt.beginPath();
+                cxt.arc(180,0,10,0,360,false);
+                var earthColor=cxt.createRadialGradient(180,0,0,180,0,10);
+                cxt.strokeStyle="#050c12";
+                earthColor.addColorStop(0,"#78B1Eb");//#&8B1Eb
+                earthColor.addColorStop(1,"#050c12");//#050c12
+                cxt.fillStyle=earthColor;
+                cxt.fill();
+                cxt.closePath(); 
+        //画月球轨道和月球
+
+                cxt.save();
+             /*   异次元空间00点,在前边的基础上，画地球时以（300,300）为中心，且未退出异次元空间
+                月球轨道以地球为中心，在异次元空间，地球为（180,0），这个地方我写错了，改了两个小时才改好 */
+                cxt.strokeStyle="#FFF";
+                cxt.translate(180,0);
+                //画月球轨道
+                cxt.beginPath();
+                cxt.arc(0,0,30,0,360,false);
+                cxt.stroke();
+                cxt.closePath(); 
+             
+                //画月球
+                cxt.rotate(time*365*Math.PI/180);
+                cxt.beginPath();
+                cxt.arc(30,0,5,0,360,false); 
+                var moonColor=cxt.createRadialGradient(30,0,0,30,0,5);
+                cxt.strokeStyle="#322222";
+                moonColor.addColorStop(0,"#c0a48e");
+                moonColor.addColorStop(1,"#322222");
+                cxt.fillStyle=moonColor;
+                cxt.fill();
+                cxt.closePath(); 
+                cxt.restore();
+                cxt.restore();
+                
+
+                //每画一次图像，时间参数加1
+                time+=1;
+         }
+           draw();
+           //通过修改第二个参数课调整速度
+           setInterval(draw,50);
+    </script>
+</body>
+</html>
