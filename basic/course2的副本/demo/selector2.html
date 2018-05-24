@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*分组 我想给所有的元素都加一个下划线  */
+        h1, p ,li {
+            text-decoration: underline;
+        }
+        /*继承  */
+        div.list {
+            font-size: 34px;
+            font-weight: bold;
+        }
+        /* 子选择器 */
+        div.child {
+            margin-top: 30px;
+        }
+        div.child p {
+            color: greenyellow;
+        }
+        div.child > p {
+            font-style: italic;
+        }
+        /*  相邻兄弟*/
+        li + li {font-weight:bold;}
+        h1 + p {margin-top:50px; color: #FF5511;}
+        /*继承  */
+        h1 ~ p{
+            font-size: 40px; 
+        }
+
+        /*权重  */
+        .weight {
+            height: 200px;
+            width: 200px;
+            background: red!important;
+        }
+        div.wight {
+            background: rosybrown;
+        }
+
+        .quanzhong {
+            background-color: skyblue!important;
+        }
+    </style>
+</head>
+<body>
+    <h1>这是标题</h1>
+    <p>这是正文</p>
+    <p>这也是正文</p>
+
+    <div class="child">
+        <p>这是在div 下直接的p</p>
+        <div>
+            <p>这是在div 下div中的p</p>
+        </div>
+    </div>
+
+
+    <div class="list"> 
+        <ul> 
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+        </ul>
+        <ol>
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+        </ol> 
+    </div>
+
+
+    <div class="weight quanzhong">
+
+    </div>
+</body>
+</html>
