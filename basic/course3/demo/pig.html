@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pigs</title>
+    <style>
+
+        button {
+            padding: 10px 30px;
+        }
+        .action-wrapper {
+            margin: 200px;
+        }
+        .battlefield {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bird {
+            width: 50px;
+        }
+        .pig {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="action-wrapper">
+        <div class="battlefield">
+                <img id="bird" class="bird" src="./images/bird.jpg" alt="">
+                <img id="pig" class="pig" src="./images/pig.jpg" alt="">
+        </div>
+        <div>
+            <button id="moveOneStep">向前走一步</button>
+            <input id="stepValue" type="number">
+            <button id="moveSomeStep">向前走几步</button>
+        </div>
+    </div>
+</body>
+<script>
+
+    var pig = document.getElementById('pig');
+    var bird = document.getElementById('bird');    
+    var moveOneStep = document.getElementById('moveOneStep');
+    var moveSomeStep = document.getElementById('moveSomeStep');
+
+    var moveDistance = 0;
+
+    // 小步走
+    function move() {
+        moveDistance +=10;    
+        bird.style.transform = "translateX("+moveDistance+"px)";
+        calcDistance(bird, pig);
+    }
+
+    // 大步走
+    function moveSteps(step) {
+        var step = parseInt(step);
+        for(var i =0; i<step; i++) {
+            move();
+        }
+        calcDistance(bird, pig);
+    }
+
+    //绑定点击
+    function clickFun(params) {
+        moveOneStep.addEventListener('click', function() {
+            move();
+        });
+        moveSomeStep.addEventListener('click', function() {
+            var steps = document.getElementById('stepValue').value;
+            moveSteps(steps);
+        });
+    }
+    clickFun();
+
+    // 获取元素
+    function getPositon(dom) {
+        return {
+            x: dom.getBoundingClientRect().x,
+            y: dom.getBoundingClientRect().y
+        }
+    }
+    // 计算两者距离
+    function calcDistance(a, b) {
+        if (getPositon(a).x >= getPositon(b).x) {
+            pig.src = "./images/pig2.jpg";
+            bird.style.visibility = "hidden";
+        }
+    }
+</script>
+</html>

@@ -5,8 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>正则表达式</title>
+    <style type="text/css">
+        .regexp-wrapper {
+            text-align: center;
+            margin: 200px;
+        }
+        input {
+            width: 50%;
+            height: 30px;
+            display: block;
+            margin:  10px auto;
+        }
+    </style>
 </head>
 <body>
+    <form class="regexp-wrapper" action="">
+        <input type="text" pattern="[1][3,4,5,7,8][0-9]{9}" title="请输入正确的手机号" placeholder="H5 pattern属性的模式">
+        <input id="mobile"  type="text">
+    
+        <button type="submit" class="validate">提交表单</button>
+        <button type="button" id="regexpBtn">验证正则</button>
+    </form>
     
 </body>
+<script>
+    (function(){
+        var regexpBtn = document.getElementById('regexpBtn');
+        var reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+
+        regexpBtn.addEventListener('click', function() {
+            var mobile = document.getElementById('mobile').value;
+            if (reg.test(mobile)) {
+                alert('通过');
+            } else {
+                alert('失败');
+            }
+        });
+    })()
+    
+</script>
 </html>

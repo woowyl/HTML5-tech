@@ -5,8 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>上午小练习</title>
+    <style>
+        .date-wrapper {
+            margin: 200px;
+        }
+        .add-num {
+            width: 200px;
+            height: 30px;
+        }
+        #addDate {
+            padding: 10px 30px;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="date-wrapper">
+        <p class="today-date">今天是: <span id="todayDate"></span></p>
+        <input id="addDays" class="add-num" type="number" placeholder="输入一个数字">
+        <p class="">计算后:<span id="calcDate"></span> </p>
+        <button id="addDate">计算 </button>
+    </div>
+
 </body>
+<script>
+    // 第一种方式
+    // var number = 10;
+    // var t = setInterval("countDown()", 1000);
+    // function countDown() {
+    //     if (number>0) {
+    //         console.log(number);
+    //         number --;
+    //     } else {
+    //         console.log('完成');
+    //         clearInterval(t);
+    //     }
+    // }
+
+    // 第二种方式
+    // var number2 = 10;
+    // function countDown2() {
+    //     console.log(number2);
+    //     number2 --;
+    //     if (number2 > 0) {
+    //         setTimeout('countDown2()',1000);
+    //     } else {
+    //         setTimeout(function() {
+    //             console.log('完成');                
+    //         },1000);
+    //     }
+    // }
+    // countDown2();
+
+
+    // 日期计算
+    var addDate = document.getElementById('addDate');
+    var addDays = document.getElementById('addDays');
+    var todayDate = document.getElementById('todayDate');
+    var calcDate = document.getElementById('calcDate');
+
+    var date = new Date();
+    var today = date.getFullYear()+"年"+(date.getMonth()+1)+"月"+date.getDate()+"日";
+    todayDate.innerHTML = today;
+    addDate.addEventListener('click', function() {
+        var time = date.getTime();
+        var addedTime = time + parseInt(addDays.value)*86400000;
+        var addedDate = new Date(addedTime);
+        calcDate.innerHTML = addedDate.getFullYear()+"年"+(addedDate.getMonth()+1)+"月"+addedDate.getDate()+"日";
+    });
+</script>
 </html>
