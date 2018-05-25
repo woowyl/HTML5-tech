@@ -16,7 +16,8 @@
         // 通信成功时，状态值为4
         if (xhr.readyState === 4){
             if (xhr.status === 200){
-                console.log(xhr.responseText);
+                console.log(xhr);
+                document.write(xhr.response);
             } else {
                 console.error(xhr.statusText);
             }
@@ -26,7 +27,7 @@
         console.error(xhr.statusText);
     }; 
     // open方式用于指定HTTP动词、请求的网址、是否异步 
-    xhr.open('GET', '/endpoint', true); 
+    xhr.open('GET', 'http://v.juhe.cn/historyWeather/province?key=4decb86841a30f58f5c2a0ae43e6c4c7', true); 
     // 发送HTTP请求 
     xhr.send(null); 
 
